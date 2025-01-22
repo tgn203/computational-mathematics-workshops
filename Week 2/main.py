@@ -88,6 +88,19 @@ def matrix_determinant(mat: list):
         raise NotImplementedError("Matrices larger than 2x2 are not supported")
 
 
+def matrix_transpose(mat: list):
+    """Calculate the transposition of a matrix"""
+
+    # Create and fill the output matrix
+    mat_ans: list = []
+    for i in range(len(mat[0])):
+        mat_ans.append([])
+        for j in range(len(mat)):
+            mat_ans[i].append(mat[j][i])
+
+    return mat_ans
+
+
 def dot_product(vec_a: list, vec_b: list):
     """Calculate the dot product of two vectors"""
 
@@ -162,6 +175,7 @@ def main():
     print(f"B x A = {matrix_multiplication(b, a)}\n")
 
     print(f"det(A) = {matrix_determinant(a)}")
+    print(f"A^T = {matrix_transpose(a)}")
 
     # Vector manipulation:
     u = [-4, -7, 3]
@@ -178,6 +192,10 @@ def main():
     print(f"u x v = {cross_product(u, v)}\n")
 
     print(f"|u| = {vector_magnitude(u)}\n")
+
+    q_as_mat = [[6], [-7]]
+    print(f"A x q = {matrix_multiplication(a, q_as_mat)}")
+    print(f"q^T x A = {matrix_multiplication(matrix_transpose(q_as_mat), a)}")
 
 
 if __name__ == "__main__":
