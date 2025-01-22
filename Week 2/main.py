@@ -105,6 +105,25 @@ def dot_product(vec_a: list, vec_b: list):
     return dot_ans
 
 
+def cross_product(vec_a: list, vec_b: list):
+    """Calculate the cross product of two vectors"""
+
+    # Ensure both are 3D vectors
+    dim_a = len(vec_a)
+    dim_b = len(vec_b)
+    if dim_a != 3 or dim_b != 3:
+        raise ValueError("Vectors must be 3D")
+
+    # Calculate the dot product
+    cross_ans = [
+        vec_a[1] * vec_b[2] - vec_a[2] * vec_b[1],
+        vec_a[2] * vec_b[0] - vec_a[0] * vec_b[2],
+        vec_a[0] * vec_b[1] - vec_a[1] * vec_b[0],
+    ]
+
+    return cross_ans
+
+
 def main():
     """
     Matrix and vector manipulation
@@ -147,6 +166,7 @@ def main():
     print("-" * 50)
 
     print(f"u * v = {dot_product(u, v)}")
+    print(f"u x v = {cross_product(u, v)}")
 
 
 if __name__ == "__main__":
