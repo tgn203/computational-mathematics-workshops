@@ -124,6 +124,15 @@ def cross_product(vec_a: list, vec_b: list):
     return cross_ans
 
 
+def vector_magnitude(vec: list):
+    """Calculate the magnitude of a vector"""
+    squared = 0
+    for i in vec:
+        squared += i**2
+
+    return squared**0.5
+
+
 def main():
     """
     Matrix and vector manipulation
@@ -166,7 +175,9 @@ def main():
     print("-" * 50)
 
     print(f"u * v = {dot_product(u, v)}")
-    print(f"u x v = {cross_product(u, v)}")
+    print(f"u x v = {cross_product(u, v)}\n")
+
+    print(f"|u| = {vector_magnitude(u)}\n")
 
 
 if __name__ == "__main__":
