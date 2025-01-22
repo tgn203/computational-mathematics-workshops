@@ -43,6 +43,39 @@ def matrix_subtraction(mat_a: list, mat_b: list):
     return mat_ans
 
 
+def matrix_scalar_multiplication(mat: list, scalar: float):
+    """Multiply a matrix by a scalar"""
+
+    # Create and fill the output matrix
+    mat_ans: list = []
+    for i, row in enumerate(mat):
+        mat_ans.append([])
+        for j in range(len(row)):
+            mat_ans[i].append(mat[i][j] * scalar)
+
+    return mat_ans
+
+
+def matrix_multiplication(mat_a: list, mat_b: list):
+    """Multiply two matrices of the correct dimensions"""
+
+    # Ensure matrices are of the same dimensions
+    dim_a = (len(mat_a), len(mat_a[0]))
+    dim_b = (len(mat_b), len(mat_b[0]))
+    if dim_a[1] != dim_b[0]:
+        raise ValueError("Matrices must be of the correct dimensions")
+
+    # Create and fill the output matrix
+    mat_ans: list = []
+    mat_ans = [[0 for _ in range(dim_b[1])] for _ in range(dim_a[0])]
+    for r, row in enumerate(mat_a):
+        for c, col in enumerate(mat_b[0]):
+            for i, val in enumerate(row):
+                mat_ans[r][c] += val * mat_b[i][c]
+
+    return mat_ans
+
+
 def main():
     """
     Matrix Manipulation
@@ -57,6 +90,14 @@ def main():
 
     print(f"A + B = {matrix_addition(a, b)}")
     print(f"A - B = {matrix_subtraction(a, b)}\n")
+
+    print(f"2A = {matrix_scalar_multiplication(a, 2)}")
+    print(
+        f"4A - 2B = {matrix_subtraction(
+            matrix_scalar_multiplication(a, 4),
+            matrix_scalar_multiplication(b, 2)
+        )}\n"
+    )
 
 
 if __name__ == "__main__":
