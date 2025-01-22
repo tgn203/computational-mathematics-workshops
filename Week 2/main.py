@@ -76,6 +76,18 @@ def matrix_multiplication(mat_a: list, mat_b: list):
     return mat_ans
 
 
+def matrix_determinant(mat: list):
+    """Calculate the determinant of a 2x2 matrix"""
+
+    # If the matrix is 2x2, calculate the determinant
+    if len(mat) == 2 and len(mat[0]) == 2:
+        return mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0]
+
+    # Larger matrices are not supported
+    else:
+        raise NotImplementedError("Matrices larger than 2x2 are not supported")
+
+
 def main():
     """
     Matrix Manipulation
@@ -98,6 +110,8 @@ def main():
             matrix_scalar_multiplication(b, 2)
         )}\n"
     )
+
+    print(f"det(A) = {matrix_determinant(a)}")
 
 
 if __name__ == "__main__":
