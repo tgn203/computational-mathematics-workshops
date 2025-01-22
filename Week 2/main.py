@@ -88,14 +88,33 @@ def matrix_determinant(mat: list):
         raise NotImplementedError("Matrices larger than 2x2 are not supported")
 
 
+def dot_product(vec_a: list, vec_b: list):
+    """Calculate the dot product of two vectors"""
+
+    # Ensure vectors are of the same dimensions
+    dim_a = len(vec_a)
+    dim_b = len(vec_b)
+    if dim_a != dim_b:
+        raise ValueError("Vectors must be of the same dimensions")
+
+    # Calculate the dot product
+    dot_ans = 0
+    for i in range(len(vec_a)):
+        dot_ans += vec_a[i] * vec_b[i]
+
+    return dot_ans
+
+
 def main():
     """
-    Matrix Manipulation
+    Matrix and vector manipulation
     """
 
+    # Matrix manipulation:
     a = [[6, -2], [-3, 5]]
     b = [[7, 1], [0, -3]]
 
+    print("-" * 50)
     print(f"A = {a}")
     print(f"B = {b}")
     print("-" * 50)
@@ -111,7 +130,23 @@ def main():
         )}\n"
     )
 
+    print(f"A x B = {matrix_multiplication(a, b)}")
+    print(f"B x A = {matrix_multiplication(b, a)}\n")
+
     print(f"det(A) = {matrix_determinant(a)}")
+
+    # Vector manipulation:
+    u = [-4, -7, 3]
+    v = [6, -2, 5]
+    q = [6, -7]
+
+    print("-" * 50)
+    print(f"u = {u}")
+    print(f"v = {v}")
+    print(f"q = {q}")
+    print("-" * 50)
+
+    print(f"u * v = {dot_product(u, v)}")
 
 
 if __name__ == "__main__":
